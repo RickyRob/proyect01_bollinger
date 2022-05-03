@@ -1,6 +1,5 @@
 ### Este es el archivo madre del proyecto 01
 from modules.func_rick import *
-import pandas as pd
 
 ticket = input('Nombre del ticket: ')
 inicio = input('Fecha del periodo inicial : ')
@@ -9,6 +8,5 @@ intervalo= input('Intervalo de datos: ')
 
 df = data(ticket,s=inicio, f=fin,interval=intervalo)
 ln_rend(df)
-con_excel(df, ticket) 
-
-#print(df.head())
+con_excel(df, ticket)
+bolling(df)
