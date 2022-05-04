@@ -5,8 +5,10 @@ ticket = input('Nombre del ticket: ')
 inicio = input('Fecha del periodo inicial : ')
 fin = input('Fecha del periodo final : ')
 intervalo= input('Intervalo de datos: ')
+ajuste = int(input('Ingresa un numero entero entre 1 y 25: '))
+
 
 df = data(ticket,s=inicio, f=fin,interval=intervalo)
 ln_rend(df)
 con_excel(df, ticket)
-bolling(df, ticket)
+bolling(df, ticket,ajuste)
