@@ -1,14 +1,24 @@
 ### Este es el archivo madre del proyecto 01
 from modules.func_rick import *
+from datetime import datetime
+import warnings
 
-ticket = input('Nombre del ticket: ')
-inicio = input('Fecha del periodo inicial : ')
-fin = input('Fecha del periodo final : ')
-intervalo= input('Intervalo de datos: ')
-ajuste = int(input('Ingresa un numero entero entre 1 y 25: '))
+warnings.filterwarnings('ignore')
+bienvenida()
 
+ticket = input('Nombre del ticket: ').upper()
+inicio = input('Fecha del periodo inicial (YYYY-MM-DD) : ')
+fin = input('Fecha del periodo final (YYYY-MM-DD)  : ')
 
-df = data(ticket,s=inicio, f=fin,interval=intervalo)
-ln_rend(df)
+try :
+    datetime.strptime(inicio, '%Y-%m-%d')
+    datetime.strptime(fin, '%Y-%m-%d')
+    df = data(ticket,s=inicio, f=fin,interval='1d')
+except:
+    print('Variables incorrectas')
+    quit()
+
 con_excel(df, ticket)
+
+ajuste = input('Ajuste (N,M,A,UA): ')
 bolling(df, ticket,ajuste)
