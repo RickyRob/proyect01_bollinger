@@ -56,8 +56,8 @@ def bolling(df, ticket, ajuste):
     """
     Creación de las bandas de volatilidad por encima y por debajo
     """
-    df['2+std'] = df['Adj Close'].rolling(20).std()+df['Adj Close']+df['Adj Close'].rolling(10).std() 
-    df['2-std'] = -df['Adj Close'].rolling(20).std()+df['Adj Close']-df['Adj Close'].rolling(10).std()
+    df['2+std'] = df['Adj Close'].rolling(20).std()+df['Adj Close']+df['Adj Close'].rolling(20).std() 
+    df['2-std'] = -df['Adj Close'].rolling(20).std()+df['Adj Close']-df['Adj Close'].rolling(20).std()
 
     """
     Calculo de la media movil a 10 datos
@@ -145,7 +145,7 @@ def bolling(df, ticket, ajuste):
     elif ajuste == 'UA':
         rol += 15
     else:
-        rol += 25
+        rol += 20
 
     # Con este bloque extraemos el indice de datos ajustados segun lo especifique el usuario
     # Ademas garantizamos que exista el indice 
